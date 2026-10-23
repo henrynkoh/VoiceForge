@@ -1,0 +1,16 @@
+# secrets and private material stay on the machine
+.elevenlabs_key
+data/
+upstream/
+__pycache__/
+*.pyc
+
+# rendered media is large and personal
+audiobooks/**/audio/
+audiobooks/**/video/
+audiobooks/**/stings/
+audiobooks/**/thumbs/
+*.wav
+*.mp3
+*.mp4
+.DS_Store

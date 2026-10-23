@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VoiceForge - clone your voice, narrate a book, pay nothing</title>
+<meta name="description" content="A local-first narration studio: clone your own voice, render audiobooks, measure every render. A 30-minute audiobook for four cents.">
+<style>
+  :root{ color-scheme: dark;
+    --bg:#0f1012; --panel:#17181b; --line:#272930; --ink:#e9eaee; --muted:#8d9098;
+    --accent:#4b8ef7; --ok:#3f9c6d; --gold:#c9a227; --bad:#c0483c; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{padding:26px 0 10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,#4b8ef7,#9b6cf6);display:grid;place-items:center;font-weight:700;font-size:15px}
+  .brand{font-weight:650;letter-spacing:-.01em}
+  .pill{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+  .spacer{flex:1}
+  .hero{padding:54px 0 18px}
+  h1{font-size:clamp(30px,4.6vw,50px);line-height:1.08;letter-spacing:-.03em;margin:0 0 16px;max-width:19ch}
+  .lede{font-size:clamp(16px,1.9vw,19px);color:#c9ccd4;max-width:62ch;margin:0 0 26px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:11px;padding:13px 20px;font-weight:600;font-size:15px;border:1px solid transparent;transition:transform .12s ease, background .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.ghost{border-color:var(--line);background:var(--panel);color:var(--ink)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin:46px 0 10px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stat .v{font-size:26px;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .stat .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+  section{padding:44px 0 6px}
+  h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:7px;transition:border-color .15s ease, transform .12s ease}
+  .card:hover{border-color:#3a3f4a;transform:translateY(-2px)}
+  .card .t{font-weight:650;font-size:15.5px;letter-spacing:-.01em}
+  .card .d{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .card .k{font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+  .wide{grid-column:1/-1}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+  th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  td.hi{color:#fff;font-weight:600}
+  footer{margin-top:56px;padding:26px 0 44px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;gap:18px;flex-wrap:wrap}
+  .tag{color:var(--gold)}
+  code{background:#111214;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">VF</div>
+    <div class="brand">VoiceForge</div>
+    <span class="pill">MIT</span>
+    <span class="pill">standard library only</span>
+    <div class="spacer"></div>
+    <a class="btn ghost" href="https://github.com/henrynkoh/VoiceForge">GitHub</a>
+  </header>
+
+  <div class="hero">
+    <h1>Clone your voice. Narrate the book. Pay almost nothing.</h1>
+    <p class="lede">A local-first narration studio that renders narration in your own cloned voice, measures every render for six defects, and packages the result as a book, a series, and upload-ready video. English runs free on your machine; only the passages that must be perfect go to the cloud.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/henrynkoh/VoiceForge/blob/main/QUICKSTART.md">Start in 5 minutes</a>
+      <a class="btn ghost" href="https://github.com/henrynkoh/VoiceForge/blob/main/TUTORIAL.md">Walk through a real build</a>
+      <a class="btn ghost" href="https://github.com/henrynkoh/VoiceForge">Source</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="v">$0.04</div><div class="l">30-minute audiobook</div></div>
+      <div class="stat"><div class="v">30:13</div><div class="l">finished audio</div></div>
+      <div class="stat"><div class="v">0</div><div class="l">defects measured</div></div>
+      <div class="stat"><div class="v">76 min</div><div class="l">machine time</div></div>
+      <div class="stat"><div class="v">9</div><div class="l">chapters, 2 languages</div></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Documents</h2>
+    <div class="grid">
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/QUICKSTART.md">
+        <span class="k">5 minutes</span><span class="t">Quickstart</span>
+        <span class="d">Install, add a voice, render a paragraph, render a whole book, package episodes. With the failure table you will actually need.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/MANUAL.md">
+        <span class="k">Reference</span><span class="t">Manual</span>
+        <span class="d">Every engine, knob, HTTP route and data file. The voice/engine contract, the chunk ceilings, mixed-language routing, the measurement system.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/TUTORIAL.md">
+        <span class="k">End to end</span><span class="t">Tutorial</span>
+        <span class="d">One audiobook built for real: the clone comparison, the hybrid split, the renders that died, and the ledger that came out of it.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/README.md">
+        <span class="k">Overview</span><span class="t">README</span>
+        <span class="d">What it is, what it cost, what it made, and how the pieces fit together.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/docs/REA.md">
+        <span class="k">Why it looks like this</span><span class="t">Reverse-engineering analysis</span>
+        <span class="d">How the upstream studio works, what was measured before a line was written, and which assumptions failed.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/docs/SIXSIGMA.md">
+        <span class="k">Measurement</span><span class="t">Six Sigma method</span>
+        <span class="d">Six defect opportunities, DPMO, process sigma, and the I-MR control chart that runs over the last 200 renders.</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>What it produced</h2>
+    <div class="grid">
+      <a class="card wide" href="https://github.com/henrynkoh/VoiceForge/blob/main/audiobooks/en-only/README.md">
+        <span class="k">Delivered</span><span class="t">Rightly Dividing, English edition</span>
+        <span class="d">Nine chapters, 30 minutes 13 seconds, four episodes of 7.2 / 6.6 / 7.6 / 10.0 minutes, eight stings, upload sheets with real timecodes. 22,960 characters, King James text quoted exactly, zero defects. The bilingual original cost 17,200 credits; this cut cost 229.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/audiobooks/en-only/rightly-dividing-30min-en-only.md">
+        <span class="k">Manuscript</span><span class="t">The script</span>
+        <span class="d">Nine chapters in publishable form, every verse checked word for word.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/audiobooks/en-only/episodes.md">
+        <span class="k">Series</span><span class="t">Episode sheet</span>
+        <span class="d">Four parts with real timecodes for open, chapters and close.</span>
+      </a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/audiobooks/en-only/youtube-episodes.md">
+        <span class="k">Publishing</span><span class="t">Upload sheet</span>
+        <span class="d">Titles, descriptions, chapter markers and tags, ready to paste.</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Marketing kit, nine channels</h2>
+    <div class="grid">
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/index.md"><span class="k">Start here</span><span class="t">Kit index</span><span class="d">Every channel, plus the claims you can defend and the ones to avoid.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/facebook.md"><span class="k">English</span><span class="t">Facebook</span><span class="d">Page post and group version, 280 words, hook first.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/instagram.md"><span class="k">English</span><span class="t">Instagram</span><span class="d">Caption, five-slide carousel and a 25-second Reel script.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/threads.md"><span class="k">English</span><span class="t">Threads</span><span class="d">Three-post thread built around the cost split.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/blogger.md"><span class="k">English</span><span class="t">Blogger</span><span class="d">700-word article with heading structure and a measured table.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/wordpress.md"><span class="k">English</span><span class="t">WordPress</span><span class="d">900-word article with excerpt, categories and tags.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/newsletter.md"><span class="k">English</span><span class="t">Newsletter</span><span class="d">Subject, preheader, issue body, single call to action.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/email.md"><span class="k">English</span><span class="t">Email sequence</span><span class="d">Three messages, day 0, day 3, day 7.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/naver-blog.md"><span class="k">Korean</span><span class="t">Naver Blog</span><span class="d">1,200 words, sectioned for Naver readers.</span></a>
+      <a class="card" href="https://github.com/henrynkoh/VoiceForge/blob/main/marketing/tistory.md"><span class="k">Korean</span><span class="t">Tistory</span><span class="d">900 words, technical reader, command blocks.</span></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The ledger</h2>
+    <table>
+      <tr><th>build</th><th>credits</th><th>cost</th><th>machine time</th><th>Korean</th></tr>
+      <tr><td>All cloud</td><td>17,200</td><td>$2.85</td><td>none</td><td>yes</td></tr>
+      <tr><td class="hi">Hybrid, English local / Korean cloud</td><td class="hi">229</td><td class="hi">$0.04</td><td class="hi">76 min</td><td class="hi">yes</td></tr>
+      <tr><td>Local only</td><td>0</td><td>$0.00</td><td>76 min</td><td>needs a multilingual model</td></tr>
+    </table>
+    <p class="d" style="color:var(--muted);font-size:13.5px;margin-top:14px">Measured, not estimated: the hybrid figure is the sum of two sting renders read off the provider's own character counter. Timbre similarity was measured with a speaker-verification embedding against the author's own recordings: local clone 0.959, cloud clone 0.815, two other speakers 0.63-0.71.</p>
+  </section>
+
+  <footer>
+    <span>VoiceForge</span>
+    <a href="https://github.com/henrynkoh/VoiceForge">github.com/henrynkoh/VoiceForge</a>
+    <a href="https://github.com/henrynkoh/VoiceForge/issues">Issues</a>
+    <span class="tag">MIT licensed code, your narration stays yours</span>
+  </footer>
+</div>
+</body>
+</html>
