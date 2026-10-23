@@ -56,11 +56,31 @@ Full paths:
 - **[docs/REA.md](docs/REA.md)** - the reverse-engineering analysis behind the design
 - **[docs/SIXSIGMA.md](docs/SIXSIGMA.md)** - the measurement system
 
+## Series workflow: one command per title
+
+A series is where narration projects actually live, and where an agent's token bill quietly doubles, because a long session re-sends everything it has ever read. The fix is to separate the one expensive planning pass from many cheap execution passes.
+
+| file | what it is |
+|---|---|
+| [SERIES.md](SERIES.md) | the plan: titles, outlines, descriptions, hashtags, thumbnail hooks. Written once. |
+| [SERIES_BRIEF.md](SERIES_BRIEF.md) | the fixed brief pasted at the top of **every** per-title session. Identical prefix means the cheap part is cached. |
+| [PROJECT_STATE.md](PROJECT_STATE.md) | the one file a fresh session reads to become productive in a single turn. |
+| [tools/series.py](tools/series.py) | the runner. `new`, `render`, `upload`, `status`. |
+
+```bash
+python3 tools/series.py new --title "Why the Address Matters"   # scaffold script + state
+python3 tools/series.py render 1                                # chapters -> audio + timecodes
+python3 tools/series.py upload 1                                # still + audio -> private draft
+python3 tools/series.py status                                  # every title on one screen
+```
+
+Then a fresh session per title, opening with the brief and one line naming the title. Measured on the project's own account: a heavy exchange in one long session carried 207,000 tokens per request at $0.0016; a fresh session starting from a one-page brief carries a few thousand, so the same series costs roughly a third as much and stops accumulating.
+
 ## Repository layout
 
 ```
 voiceforge/     the app: http server, engines, chunker, QA, Six Sigma
-tools/          audiobook renderer, episode packager, Doe/MSA experiments, YouTube uploader
+tools/          audiobook renderer, single-title series runner, episode packager, Doe/MSA experiments, YouTube uploader
 audiobooks/     a finished English edition: script, stings, episode sheets, upload sheet
 marketing/      launch copy for Facebook, Instagram, Threads, Blogger, Naver, Tistory, WordPress, newsletter, email
 docs/           the analysis and the measurement method
